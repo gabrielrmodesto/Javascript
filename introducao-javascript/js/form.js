@@ -21,11 +21,13 @@ botaoAdicionar.addEventListener("click", function(event){
     pesoTd.textContent = peso;
     alturaTd.textContent = altura;
     gorduraTd.textContent = gordura;
+    imcTd.textContent = calculaImc(peso,altura);
     //criando o apendice entre tr e td
     pacienteTr.appendChild(nomeTd);
     pacienteTr.appendChild(pesoTd);
     pacienteTr.appendChild(alturaTd);
     pacienteTr.appendChild(gorduraTd);
+    pacienteTr.appendChild(imcTd);
     //pegando o tbody para ter o tr ligado a ele
     var tabela = document.querySelector("#tabela-pacientes");
     tabela.appendChild(pacienteTr);
