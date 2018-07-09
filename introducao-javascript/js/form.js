@@ -6,11 +6,9 @@ botaoAdicionar.addEventListener("click", function(event){
 	event.preventDefault();
 	//seleciono o formulario
     var form = document.querySelector("#form-adiciona");
-    //valores dos inputs atraves de name
-    var nome = form.nome.value;
-    var peso = form.peso.value;
-    var altura = form.altura.value;
-    var gordura = form.gordura.value;
+    //chamando a funcao atraves de um objeto
+    var paciente = obtemPacienteDoFormulario(form);
+
     //criando a tr
     var pacienteTr = document.createElement("tr");
     //criando as td
@@ -43,3 +41,15 @@ botaoAdicionar.addEventListener("click", function(event){
     
 
 });
+
+function obtemPacienteDoFormulario(form){
+    //criar o objeto paciente
+    var paciente = {
+        nome: form.nome.value,
+        peso: form.peso.value,
+        altura: form.altura.value,
+        gordura: form.gordura.value,
+        imc: calculaImc(form.peso.value,form.altura.value)
+    }
+    return paciente;
+}
