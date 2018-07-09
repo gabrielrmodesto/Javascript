@@ -1,6 +1,3 @@
-//capitulo 5
-//quebrando o codigo em arquivos diferentes
-
 var botaoAdicionar = document.querySelector("#adicionar-paciente");
 botaoAdicionar.addEventListener("click", function(event){
 	event.preventDefault();
@@ -10,6 +7,12 @@ botaoAdicionar.addEventListener("click", function(event){
     var paciente = obtemPacienteDoFormulario(form);
     //chamando a funcao de montar as tr
     var pacienteTr = montaTr(paciente);
+    var erro = validaPaciente(paciente);
+    if(erro.length > 0){
+        var mensagemErro = document.querySelector("#mensagem-erro");
+        mensagemErro.textContent = erro;
+        return;
+    }
     //pegando o tbody para ter o tr ligado a ele
     var tabela = document.querySelector("#tabela-pacientes");
     tabela.appendChild(pacienteTr); 
@@ -49,4 +52,13 @@ function montaTd(dado,classe){
     td.textContent = dado;
     td.classList.add(classe);
     return td;
+}
+
+function validaPaciente(paciente){
+    if(validaPeso(paciente.peso)){
+        return "";
+    }
+    else{
+        return "Paciente invalido";
+    }
 }
