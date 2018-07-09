@@ -1,5 +1,5 @@
-//capitulo 2
-//Video de operadores logicos 
+//capitulo 5
+//quebrando o codigo em arquivos diferentes
 var titulo = document.querySelector(".titulo");
 titulo.textContent = "Aparecida Nutricionista";
 
