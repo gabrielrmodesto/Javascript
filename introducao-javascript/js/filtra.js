@@ -2,17 +2,19 @@ var campoFiltro = document.querySelector("#filtrar-paciente");
 
 campoFiltro.addEventListener("input", function(){
 	var pacientes = document.querySelectorAll(".paciente");
-	if(this.value > 0){
+	if(this.value.length > 0){
 		for(var i=0; i < pacientes.length; i++){
 			var paciente = pacientes[i];
 			var tdNome = paciente.querySelector(".info-nome");
 			var nome = tdNome.textContent;
-			if(nome != this.value){
+			//expressao regular para a procura dinamica
+			var expressao = new RegExp(this.value,"i");
+			if(!expressao.test(nome)){
 				paciente.classList.add("invisivel");
 			}
-			// else{
-			// 	paciente.classList.remove("invisivel");
-			// }
+			else{
+				paciente.classList.remove("invisivel");
+			}
 		}
 	}
 	else{
