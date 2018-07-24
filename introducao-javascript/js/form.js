@@ -14,8 +14,8 @@ botaoAdicionar.addEventListener("click", function(event){
         return;
     }
     //pegando o tbody para ter o tr ligado a ele
-    var tabela = document.querySelector("#tabela-pacientes");
-    tabela.appendChild(pacienteTr); 
+    adicionaPaciente(paciente);
+
 
     form.reset();
     var mensagensErro = document.querySelector("#mensagens-erro");
@@ -75,4 +75,10 @@ function exibeMensagensDeErro(erros){
         li.textContent = erro;
         ul.appendChild(li);
     });
+}
+
+function adicionaPaciente(paciente){
+    var pacienteTr = montaTr(paciente);
+    var tabela = document.querySelector("#tabela-pacientes");
+    tabela.appendChild(pacienteTr);
 }
